@@ -1,15 +1,15 @@
 <template>
-  <v-app> Hello World!! </v-app>
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
-
 <script>
 export default {
   name: "App",
-
-  components: {},
-
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/styles/site.scss";
+</style>
