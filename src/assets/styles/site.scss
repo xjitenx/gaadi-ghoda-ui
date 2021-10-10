@@ -1,0 +1,24 @@
+.v-application--wrap {
+  background-color: gray;
+}
+
+$max-percentage: 100;
+
+@mixin width-percentage {
+  @for $i from 0 through $max-percentage {
+    .w-#{$i} {
+      width: percentage($i / 100);
+    }
+  }
+}
+
+@mixin height-percentage {
+  @for $i from 0 through $max-percentage {
+    .h-#{$i} {
+      height: percentage($i / 100);
+    }
+  }
+}
+
+@include width-percentage;
+@include height-percentage;
