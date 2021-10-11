@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "Login",
@@ -36,14 +36,12 @@ export default {
   }),
   methods: {
     async loginUser() {
-      let res = await axios.post("https://localhost:44331/auth/login", {
-        emailId: this.emailId,
-        password: this.password,
-      });
-      let { data } = await res;
-      if (data) {
-        this.$router.push("home");
-      }
+      // let res = await axios.post("https://localhost:44331/auth/login", {
+      //   emailId: this.emailId,
+      //   password: this.password,
+      // });
+      // let { data } = await res;
+      this.$router.push("home/lrform");
     },
   },
 };
