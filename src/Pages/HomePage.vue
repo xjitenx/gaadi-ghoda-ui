@@ -3,7 +3,7 @@
     <top-nav-bar />
     <div class="d-flex h-100 w-100 pa-2">
       <left-nav-bar />
-      <div class="ml-2 pa-2 w-88 white">
+      <div class="ml-2 pa-2 w-85 white">
         <router-view />
       </div>
     </div>
