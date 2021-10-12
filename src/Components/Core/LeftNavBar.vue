@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column white w-15 rounded">
     <v-card class="mx-auto h-100">
-      <v-navigation-drawer class="deep-purple accent-4" dark permanent>
+      <v-navigation-drawer class="deep-purple accent" light permanent>
         <v-list>
           <v-list-item v-for="item in items" :key="item.title" link>
             <v-list-item-icon>
@@ -20,12 +20,6 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-
-        <template v-slot:append>
-          <div class="pa-2">
-            <v-btn block> Logout </v-btn>
-          </div>
-        </template>
       </v-navigation-drawer>
     </v-card>
   </div>
