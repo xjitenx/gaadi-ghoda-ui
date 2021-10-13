@@ -1,13 +1,45 @@
 <template>
-  <div class="d-flex flex-column white pa-2 w-12 rounded">
-    <router-link to="lrform">LR Form</router-link>
-    <router-link to="lrlist">LR List</router-link>
+  <div class="d-flex flex-column white w-15 rounded">
+    <v-card class="mx-auto h-100">
+      <v-navigation-drawer class="deep-purple accent" light permanent>
+        <v-list>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            @click="() => changeRoute(item.toName)"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+    </v-card>
   </div>
 </template>
 
 <script>
 export default {
   name: "LeftNavBar",
+  data: () => ({
+    items: [
+      { title: "LR Manager", icon: "mdi-view-dashboard", toName: "LRManager" },
+      { title: "Bill Manager", icon: "mdi-account-box", toName: "BillManager" },
+      { title: "Parties", icon: "mdi-gavel", toName: "Parties" },
+    ],
+  }),
+  methods: {
+    changeRoute(routeName) {
+      this.$router.push({ name: routeName });
+    },
+  },
 };
 </script>
 

@@ -1,10 +1,10 @@
 <template>
-  <div>LR Form</div>
+  <div>Bill Manager</div>
 </template>
 
 <script>
 export default {
-  name: "LRForm",
+  name: "BillManager",
 };
 </script>
 
