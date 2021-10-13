@@ -3,19 +3,19 @@
     <v-card class="mx-auto h-100">
       <v-navigation-drawer class="deep-purple accent" light permanent>
         <v-list>
-          <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            @click="() => changeRoute(item.toName)"
+          >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
               <v-list-item-title>
-                <router-link
-                  class="text-decoration-none black--text h-100"
-                  :to="item.to"
-                >
-                  {{ item.title }}
-                </router-link>
+                {{ item.title }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -30,11 +30,16 @@ export default {
   name: "LeftNavBar",
   data: () => ({
     items: [
-      { title: "LR Manager", icon: "mdi-view-dashboard", to: "lrform" },
-      { title: "Bill Manager", icon: "mdi-account-box", to: "lrlist" },
-      { title: "Parties", icon: "mdi-gavel", to: "" },
+      { title: "LR Manager", icon: "mdi-view-dashboard", toName: "LRManager" },
+      { title: "Bill Manager", icon: "mdi-account-box", toName: "BillManager" },
+      { title: "Parties", icon: "mdi-gavel", toName: "Parties" },
     ],
   }),
+  methods: {
+    changeRoute(routeName) {
+      this.$router.push({ name: routeName });
+    },
+  },
 };
 </script>
 

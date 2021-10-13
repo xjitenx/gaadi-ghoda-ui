@@ -41,7 +41,7 @@ export default {
       //   password: this.password,
       // });
       // let { data } = await res;
-      this.$router.push("home/lrform");
+      this.$router.push({ name: "LRManager" });
     },
   },
 };
