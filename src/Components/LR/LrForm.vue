@@ -7,54 +7,42 @@
       <v-container>
         <v-row>
           <v-col cols="12" sm="6" md="4">
-            <v-text-field
-              v-model="lrData.origin"
-              label="Origin*"
-              required
-            ></v-text-field>
+            <v-text-field v-model="lrRecord.origin" label="Origin*" required />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrData.destination"
+              v-model="lrRecord.destination"
               label="Destination*"
               required
-            ></v-text-field>
+            />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrData.vehicleNo"
+              v-model="lrRecord.vehicleNo"
               label="Vehicle No.*"
               required
-            ></v-text-field>
+            />
+          </v-col>
+          <v-col cols="12" sm="6" md="4">
+            <v-text-field v-model="lrRecord.weight" label="Weight*" required />
+          </v-col>
+          <v-col cols="12" sm="6" md="4">
+            <v-text-field v-model="lrRecord.rate" label="Rate*" required />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrData.weight"
-              label="Weight*"
-              required
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6" md="4">
-            <v-text-field
-              v-model="lrData.rate"
-              label="Rate*"
-              required
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6" md="4">
-            <v-text-field
-              v-model="lrData.freight"
+              v-model="lrRecord.freight"
               label="Freight*"
               disbaled
               required
-            ></v-text-field>
+            />
           </v-col>
           <v-col cols="12">
             <v-text-field
-              v-model="lrData.partyName"
+              v-model="lrRecord.partyName"
               label="Party Name*"
               required
-            ></v-text-field>
+            />
           </v-col>
         </v-row>
       </v-container>
@@ -71,10 +59,13 @@
 </template>
 
 <script>
+import { cloneDeep } from "lodash";
+
 export default {
   name: "LrForm",
   data: () => ({
-    lrData: {
+    lrRecord: {
+      lrNo: 22,
       origin: "",
       destination: "",
       vehicleNo: "",
@@ -86,8 +77,8 @@ export default {
   }),
   methods: {
     saveLR() {
-      window.console.log(this.lrData);
       this.$emit("close-model");
+      this.$emit("save-lr", cloneDeep(this.lrRecord));
     },
   },
 };
