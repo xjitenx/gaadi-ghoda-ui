@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginPage from "@/Pages/LoginPage.vue";
 import HomePage from "@/Pages/HomePage.vue";
-import LrManager from "@/Components/LR/LrManager.vue";
+import LorryReceiptManager from "@/Components/LorryReceipt/LorryReceiptManager.vue";
 import BillManager from "@/Components/BillManager/BillManager.vue";
 import Parties from "@/Components/Parties/Parties.vue";
 
@@ -20,9 +20,9 @@ const routes = [
     component: HomePage,
     children: [
       {
-        path: "LRManager",
-        name: "LRManager",
-        component: LrManager,
+        path: "LorryReceiptManager",
+        name: "LorryReceiptManager",
+        component: LorryReceiptManager,
       },
       {
         path: "BillManager",

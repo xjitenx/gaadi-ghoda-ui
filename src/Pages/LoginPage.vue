@@ -12,9 +12,7 @@ export default {
   components: {
     Login,
   },
-  data: () => ({
-    name: "World!!",
-  }),
+  data: () => ({}),
 };
 </script>
 

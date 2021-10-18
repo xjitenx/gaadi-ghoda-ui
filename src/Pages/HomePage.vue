@@ -29,8 +29,8 @@ export default {
   },
   data: () => ({
     layoutPresets: {
-      LRManager: {
-        title: "LR Manager",
+      LorryReceiptManager: {
+        title: "Lorry Receipt Manager",
       },
       BillManager: {
         title: "Bill Manager",

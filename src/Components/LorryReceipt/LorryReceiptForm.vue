@@ -1,37 +1,49 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="text-h5">LR Form</span>
+      <span class="text-h5">Lorry Receipt Form</span>
     </v-card-title>
     <v-card-text>
       <v-container>
         <v-row>
           <v-col cols="12" sm="6" md="4">
-            <v-text-field v-model="lrRecord.origin" label="Origin*" required />
+            <v-text-field
+              v-model="lorryReceiptRecord.origin"
+              label="Origin*"
+              required
+            />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrRecord.destination"
+              v-model="lorryReceiptRecord.destination"
               label="Destination*"
               required
             />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrRecord.vehicleNo"
+              v-model="lorryReceiptRecord.vehicleNo"
               label="Vehicle No.*"
               required
             />
           </v-col>
           <v-col cols="12" sm="6" md="4">
-            <v-text-field v-model="lrRecord.weight" label="Weight*" required />
-          </v-col>
-          <v-col cols="12" sm="6" md="4">
-            <v-text-field v-model="lrRecord.rate" label="Rate*" required />
+            <v-text-field
+              v-model="lorryReceiptRecord.weight"
+              label="Weight*"
+              required
+            />
           </v-col>
           <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lrRecord.freight"
+              v-model="lorryReceiptRecord.rate"
+              label="Rate*"
+              required
+            />
+          </v-col>
+          <v-col cols="12" sm="6" md="4">
+            <v-text-field
+              v-model="lorryReceiptRecord.freight"
               label="Freight*"
               disbaled
               required
@@ -39,7 +51,7 @@
           </v-col>
           <v-col cols="12">
             <v-text-field
-              v-model="lrRecord.partyName"
+              v-model="lorryReceiptRecord.partyName"
               label="Party Name*"
               required
             />
@@ -53,7 +65,7 @@
       <v-btn color="blue darken-1" text @click="$emit('close-model')">
         Close
       </v-btn>
-      <v-btn color="blue darken-1" text @click="saveLR"> Save </v-btn>
+      <v-btn color="blue darken-1" text @click="saveLorryReceipt"> Save </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -62,10 +74,10 @@
 import { cloneDeep } from "lodash";
 
 export default {
-  name: "LrForm",
+  name: "LorryReceiptForm",
   data: () => ({
-    lrRecord: {
-      lrNo: 22,
+    lorryReceiptRecord: {
+      no: 22,
       origin: "",
       destination: "",
       vehicleNo: "",
@@ -76,9 +88,9 @@ export default {
     },
   }),
   methods: {
-    saveLR() {
+    saveLorryReceipt() {
       this.$emit("close-model");
-      this.$emit("save-lr", cloneDeep(this.lrRecord));
+      this.$emit("save-lorry-receipt", cloneDeep(this.lorryReceiptRecord));
     },
   },
 };
