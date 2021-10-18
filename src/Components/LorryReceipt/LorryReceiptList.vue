@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="lrList"
+    :items="lorryReceiptList"
     :items-per-page="8"
     class="elevation-1"
   ></v-data-table>
@@ -9,12 +9,12 @@
 
 <script>
 export default {
-  name: "LrList",
-  props: ["lrList"],
+  name: "LorryReceiptList",
+  props: ["lorryReceiptList"],
   data() {
     return {
       headers: [
-        { text: "LR No.", value: "lrNo" },
+        { text: "S.No", value: "no" },
         { text: "Origin", value: "origin" },
         { text: "Destination", value: "destination" },
         { text: "Vehicle No.", value: "vehicleNo" },

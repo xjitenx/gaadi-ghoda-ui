@@ -35,7 +35,7 @@ export default {
       {
         title: "LR Manager",
         icon: "mdi-view-dashboard",
-        toName: "LRManager",
+        toName: "LorryReceiptManager",
       },
       {
         title: "Bill Manager",

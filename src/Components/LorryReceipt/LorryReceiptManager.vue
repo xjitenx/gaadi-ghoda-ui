@@ -2,26 +2,29 @@
   <div>
     <div class="d-flex mb-2">
       <v-spacer />
-      <v-btn @click="addLR">Add LR</v-btn>
+      <v-btn @click="addLorryReceipt">Add Lorry Receipt</v-btn>
     </div>
-    <lr-list :lr-list="lrList" />
+    <lorry-receipt-list :lorry-receipt-list="lorryReceiptList" />
     <v-dialog v-model="addLRModelVisible" persistent max-width="600px">
-      <lr-form @close-model="addLRModelVisible = false" @save-lr="saveLr" />
+      <lorry-receipt-form
+        @close-model="addLRModelVisible = false"
+        @save-lorry-receipt="saveLorryReceipt"
+      />
     </v-dialog>
   </div>
 </template>
 
 <script>
-import LrForm from "./LrForm.vue";
-import LrList from "./LrList.vue";
+import LorryReceiptForm from "./LorryReceiptForm.vue";
+import LorryReceiptList from "./LorryReceiptList.vue";
 export default {
-  name: "LrManager",
-  components: { LrForm, LrList },
+  name: "LorryReceiptManager",
+  components: { LorryReceiptForm, LorryReceiptList },
   data: () => ({
     addLRModelVisible: false,
-    lrList: [
+    lorryReceiptList: [
       {
-        lrNo: 1,
+        no: 1,
         origin: "Mundra",
         destination: "Delhi",
         vehicleNo: "GJ-12A-2323",
@@ -31,7 +34,7 @@ export default {
         partyName: "ABC Party",
       },
       {
-        lrNo: 2,
+        no: 2,
         origin: "Mundra",
         destination: "Delhi",
         vehicleNo: "GJ-12A-2323",
@@ -41,7 +44,7 @@ export default {
         partyName: "ABC Party",
       },
       {
-        lrNo: 3,
+        no: 3,
         origin: "Mundra",
         destination: "Delhi",
         vehicleNo: "GJ-12A-2323",
@@ -53,11 +56,11 @@ export default {
     ],
   }),
   methods: {
-    addLR() {
+    addLorryReceipt() {
       this.addLRModelVisible = true;
     },
-    saveLr(lrRecord) {
-      this.lrList.push(lrRecord);
+    saveLorryReceipt(lorryReceiptRecord) {
+      this.lorryReceiptList.push(lorryReceiptRecord);
     },
   },
 };
