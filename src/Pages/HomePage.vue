@@ -38,6 +38,9 @@ export default {
       Parties: {
         title: "Parties",
       },
+      Brokers: {
+        title: "Brokers",
+      },
     },
   }),
 };

@@ -5,6 +5,7 @@ import HomePage from "@/Pages/HomePage.vue";
 import LorryReceiptManager from "@/Components/LorryReceipt/LorryReceiptManager.vue";
 import BillManager from "@/Components/BillManager/BillManager.vue";
 import Parties from "@/Components/Parties/Parties.vue";
+import Brokers from "@/Components/Brokers/Brokers.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
         path: "Parties",
         name: "Parties",
         component: Parties,
+      },
+      {
+        path: "Brokers",
+        name: "Brokers",
+        component: Brokers,
       },
     ],
   },
