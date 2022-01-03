@@ -14,11 +14,16 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Name", value: "partyName" },
-        { text: "Email-Id", value: "partyEmailId" },
-        { text: "Primary Contact", value: "partyPrimaryContactNo" },
-        { text: "Secondary Contact", value: "partySecondaryContactNo" },
-        { text: "Address", value: "partyAddress" },
+        { text: "Name", value: "name" },
+        { text: "First Name", value: "personFirstName" },
+        { text: "Last Name", value: "personLastName" },
+        { text: "Email-Id", value: "emailId" },
+        { text: "Contact", value: "contactNo" },
+        { text: "Address", value: "address" },
+        { text: "Country", value: "country" },
+        { text: "State", value: "state" },
+        { text: "City", value: "city" },
+        { text: "ZipCode", value: "zipCode" },
       ],
     };
   },
