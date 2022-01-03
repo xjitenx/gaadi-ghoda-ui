@@ -30,21 +30,21 @@
             required
           />
         </v-col>
-        <v-col cols="12" sm="6" md="4">
+        <v-col cols="12" sm="6" md="6">
           <v-text-field
             v-model="partyRecord.ContactNo"
             label="Contact No."
             required
           />
         </v-col>
-        <v-col cols="12" sm="6" md="4">
+        <v-col cols="12" sm="6" md="6">
           <v-text-field
             v-model="partyRecord.Address"
             label="Address"
             required
           />
         </v-col>
-        <v-col cols="12" sm="6" md="4">
+        <v-col cols="12" sm="6" md="6">
           <v-text-field
             v-model="partyRecord.Country"
             label="Country"
