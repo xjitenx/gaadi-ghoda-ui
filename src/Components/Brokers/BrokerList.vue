@@ -2,7 +2,7 @@
   <v-data-table
     :headers="headers"
     :items="brokerList"
-    :items-per-page="8"
+    :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
 </template>
@@ -14,10 +14,16 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Name", value: "brokerName" },
-        { text: "Email-Id", value: "brokerEmailId" },
-        { text: "Contact No", value: "brokerContactNo" },
-        { text: "Address", value: "brokerAddress" },
+        { text: "Name", value: "name" },
+        { text: "First Name", value: "personFirstName" },
+        { text: "Last Name", value: "personLastName" },
+        { text: "Email-Id", value: "emailId" },
+        { text: "Contact", value: "contactNo" },
+        { text: "Address", value: "address" },
+        { text: "Country", value: "country" },
+        { text: "State", value: "state" },
+        { text: "City", value: "city" },
+        { text: "ZipCode", value: "zipCode" },
       ],
     };
   },

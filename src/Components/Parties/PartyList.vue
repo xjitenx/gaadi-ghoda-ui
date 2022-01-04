@@ -2,7 +2,7 @@
   <v-data-table
     :headers="headers"
     :items="partyList"
-    :items-per-page="8"
+    :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
 </template>

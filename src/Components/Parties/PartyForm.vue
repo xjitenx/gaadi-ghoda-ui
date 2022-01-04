@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       partyRecord: {
-        OrgId: "9c97fd6f-5bed-43d0-a8ad-a396babae3cc",
+        OrgId: this.$store.state.userProfile.orgId,
         Name: "",
         PersonFirstName: "",
         PersonLastName: "",
@@ -95,6 +95,11 @@ export default {
   methods: {
     saveParty() {
       this.$emit("save-party", cloneDeep(this.partyRecord));
+    },
+  },
+  computed: {
+    orgId() {
+      return this.$store.state.userProfile.orgId;
     },
   },
 };

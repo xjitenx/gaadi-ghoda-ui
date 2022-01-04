@@ -15,14 +15,14 @@ export default {
   mounted() {
     this.$store.dispatch("getParty");
   },
-  methods: {
-    saveParty(partyRecord) {
-      this.$store.dispatch("saveParty", partyRecord);
-    },
-  },
   computed: {
     partyList() {
       return this.$store.state.partyList;
+    },
+  },
+  methods: {
+    saveParty(partyRecord) {
+      this.$store.dispatch("saveParty", partyRecord);
     },
   },
 };
