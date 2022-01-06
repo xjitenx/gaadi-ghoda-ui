@@ -1,45 +1,45 @@
 <template>
   <div>
-    <party-form @save-party="saveParty" />
+    <div class="d-flex mb-2">
+      <v-spacer />
+      <v-btn @click="openPartyFormDialog">Add Party</v-btn>
+    </div>
     <party-list :party-list="partyList" />
+    <v-dialog v-model="addPartyDialogVisible" persistent max-width="600px">
+      <party-form
+        @save-party="saveParty"
+        @close-model="addPartyDialogVisible = false"
+      />
+    </v-dialog>
   </div>
 </template>
 
 <script>
 import PartyForm from "./PartyForm.vue";
 import PartyList from "./PartyList.vue";
+
 export default {
   components: { PartyForm, PartyList },
   name: "Parties",
-  data: () => ({
-    partyList: [
-      {
-        partyName: "Ambe Impex",
-        partyEmailId: "ambe@poplol.com",
-        partyPrimaryContactNo: "3232323232",
-        partySecondaryContactNo: "3232323232",
-        partyAddress: "Delhi",
-      },
-      {
-        partyName: "Ambe Impex2",
-        partyEmailId: "ambe@poplol.com",
-        partyPrimaryContactNo: "3232323232",
-        partySecondaryContactNo: "3232323322",
-        partyAddress: "Delhi",
-      },
-      {
-        partyName: "Ambe Impex3",
-        partyEmailId: "ambe@poplol.com",
-        partyPrimaryContactNo: "3233232322",
-        partySecondaryContactNo: "3232232322",
-        partyAddress: "Delhi",
-      },
-    ],
-  }),
+  data() {
+    return {
+      addPartyDialogVisible: false,
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getParty");
+  },
+  computed: {
+    partyList() {
+      return this.$store.state.partyList;
+    },
+  },
   methods: {
+    openPartyFormDialog() {
+      this.addPartyDialogVisible = true;
+    },
     saveParty(partyRecord) {
-      window.console.log(partyRecord);
-      this.partyList.push(partyRecord);
+      this.$store.dispatch("saveParty", partyRecord);
     },
   },
 };

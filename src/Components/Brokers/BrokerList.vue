@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="partyList"
+    :items="brokerList"
     :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  name: "PartyList",
-  props: ["partyList"],
+  name: "BrokerList",
+  props: ["brokerList"],
   data() {
     return {
       headers: [

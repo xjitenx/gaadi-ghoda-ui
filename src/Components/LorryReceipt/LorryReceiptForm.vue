@@ -41,18 +41,18 @@
               required
             />
           </v-col>
-          <v-col cols="12" sm="6" md="4">
+          <v-col cols="12">
             <v-text-field
-              v-model="lorryReceiptRecord.freight"
-              label="Freight*"
-              disbaled
+              v-model="lorryReceiptRecord.partyId"
+              label="Party Name*"
               required
             />
           </v-col>
-          <v-col cols="12">
+          <v-col cols="12" sm="6" md="4">
             <v-text-field
-              v-model="lorryReceiptRecord.partyName"
-              label="Party Name*"
+              v-model="lorryReceiptRecord.brokerId"
+              label="Broker Name*"
+              disbaled
               required
             />
           </v-col>
@@ -75,18 +75,20 @@ import { cloneDeep } from "lodash";
 
 export default {
   name: "LorryReceiptForm",
-  data: () => ({
-    lorryReceiptRecord: {
-      no: 22,
-      origin: "",
-      destination: "",
-      vehicleNo: "",
-      weight: "",
-      rate: "",
-      freight: "",
-      partyName: "",
-    },
-  }),
+  data() {
+    return {
+      lorryReceiptRecord: {
+        orgId: this.$store.state.userProfile.orgId,
+        origin: "",
+        destination: "",
+        vehicleNo: "",
+        weight: "",
+        rate: "",
+        partyId: "",
+        brokerId: "",
+      },
+    };
+  },
   methods: {
     saveLorryReceipt() {
       this.$emit("close-model");

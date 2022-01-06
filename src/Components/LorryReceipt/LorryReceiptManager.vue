@@ -22,45 +22,21 @@ export default {
   components: { LorryReceiptForm, LorryReceiptList },
   data: () => ({
     addLRModelVisible: false,
-    lorryReceiptList: [
-      {
-        no: 1,
-        origin: "Mundra",
-        destination: "Delhi",
-        vehicleNo: "GJ-12A-2323",
-        weight: "32",
-        rate: "2500",
-        freight: "80000",
-        partyName: "ABC Party",
-      },
-      {
-        no: 2,
-        origin: "Mundra",
-        destination: "Delhi",
-        vehicleNo: "GJ-12A-2323",
-        weight: "32",
-        rate: "2500",
-        freight: "80000",
-        partyName: "ABC Party",
-      },
-      {
-        no: 3,
-        origin: "Mundra",
-        destination: "Delhi",
-        vehicleNo: "GJ-12A-2323",
-        weight: "32",
-        rate: "2500",
-        freight: "80000",
-        partyName: "ABC Party",
-      },
-    ],
   }),
+  mounted() {
+    this.$store.dispatch("getLorryReceipt");
+  },
   methods: {
     addLorryReceipt() {
       this.addLRModelVisible = true;
     },
     saveLorryReceipt(lorryReceiptRecord) {
-      this.lorryReceiptList.push(lorryReceiptRecord);
+      this.$store.dispatch("saveLorryReceipt", lorryReceiptRecord);
+    },
+  },
+  computed: {
+    lorryReceiptList() {
+      return this.$store.state.lorryReceipt;
     },
   },
 };

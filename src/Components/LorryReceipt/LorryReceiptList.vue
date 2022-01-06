@@ -14,14 +14,14 @@ export default {
   data() {
     return {
       headers: [
-        { text: "S.No", value: "no" },
+        { text: "LR No", value: "no" },
         { text: "Origin", value: "origin" },
         { text: "Destination", value: "destination" },
         { text: "Vehicle No.", value: "vehicleNo" },
         { text: "Weight", value: "weight" },
         { text: "Rate", value: "rate" },
-        { text: "Freight", value: "freight" },
-        { text: "Party Name", value: "partyName" },
+        { text: "Party Name", value: "partyId" },
+        { text: "Broker Name", value: "brokerId" },
       ],
     };
   },

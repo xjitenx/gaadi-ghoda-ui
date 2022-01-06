@@ -47,6 +47,11 @@ export default {
         icon: "mdi-gavel",
         toName: "Parties",
       },
+      {
+        title: "Brokers",
+        icon: "mdi-gavel",
+        toName: "Brokers",
+      },
     ],
   }),
   computed: {

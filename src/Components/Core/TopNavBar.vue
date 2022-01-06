@@ -9,7 +9,7 @@
         alt="Avatar"
       />
     </v-avatar>
-    User_Name
+    {{ userName }}
     <v-icon color="white" size="26" class="ml-2">mdi-power</v-icon>
   </v-app-bar>
 </template>
@@ -17,6 +17,15 @@
 <script>
 export default {
   name: "TopNavBar",
+  computed: {
+    userName() {
+      return (
+        this.$store.state.userProfile.firstName +
+        " " +
+        this.$store.state.userProfile.lastName
+      );
+    },
+  },
 };
 </script>
 

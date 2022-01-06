@@ -26,8 +26,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-
 export default {
   name: "Login",
   data: () => ({
@@ -35,13 +33,11 @@ export default {
     password: "poplol123",
   }),
   methods: {
-    async loginUser() {
-      // let res = await axios.post("https://localhost:44331/auth/login", {
-      //   emailId: this.emailId,
-      //   password: this.password,
-      // });
-      // let { data } = await res;
-      this.$router.push({ name: "LorryReceiptManager" });
+    loginUser() {
+      this.$store.dispatch("loginUser", {
+        loginId: this.emailId,
+        password: this.password,
+      });
     },
   },
 };
