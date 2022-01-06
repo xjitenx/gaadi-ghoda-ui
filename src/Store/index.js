@@ -9,6 +9,7 @@ const state = {
   userProfile: {},
   partyList: [],
   brokerList: [],
+  lorryReceipt: [],
 };
 
 const getters = {};
@@ -23,6 +24,9 @@ const mutations = {
   SET_BROKER(state, brokerList) {
     state.brokerList = brokerList;
   },
+  SET_LORRY_RECEIPT(state, lorryReceipt) {
+    state.lorryReceipt = lorryReceipt;
+  },
 };
 
 const actions = {
@@ -35,7 +39,7 @@ const actions = {
           dispatch("getUserProfile", loginResponse);
         }
       },
-      (error) => console.log("Not Login FAILED ISSUE", error)
+      (error) => console.log("Login FAILED", error)
     );
   },
   getUserProfile({ commit }, { userId }) {
@@ -54,7 +58,7 @@ const actions = {
       ({ data: partyList }) => {
         commit("SET_PARTIE", partyList);
       },
-      (error) => console.log("Not Login FAILED ISSUE", error)
+      (error) => console.log("Couldnt fetch party", error)
     );
   },
   saveParty({ dispatch }, party) {
@@ -63,7 +67,7 @@ const actions = {
       () => {
         dispatch("getParty");
       },
-      (error) => console.log("Not able to save party", error)
+      (error) => console.log("Couldnt save party", error)
     );
   },
   getBroker({ commit }) {
@@ -73,7 +77,7 @@ const actions = {
         console.log("brokerList", brokerList);
         commit("SET_BROKER", brokerList);
       },
-      (error) => console.log("Not Login FAILED ISSUE", error)
+      (error) => console.log("Couldnt fetch broker", error)
     );
   },
   saveBroker({ dispatch }, broker) {
@@ -82,8 +86,29 @@ const actions = {
       () => {
         dispatch("getBroker");
       },
-      (error) => console.log("Not able to save party", error)
+      (error) => console.log("Couldnt save broker", error)
     );
+  },
+  getLorryReceipt({ commit }) {
+    console.log(commit);
+    axios.get("https://localhost:7073/lorryreceipt/lorryreceipt").then(
+      ({ data: lorryReceiptList }) => {
+        console.log("brokerList", lorryReceiptList);
+        commit("SET_LORRY_RECEIPT", lorryReceiptList);
+      },
+      (error) => console.log("Couldnt fetch lorry reciepts", error)
+    );
+  },
+  saveLorryReceipt({ dispatch }, lorryReceipt) {
+    console.log("lorryReceipt", lorryReceipt, dispatch);
+    axios
+      .post("https://localhost:7073/lorryreceipt/lorryreceipt", lorryReceipt)
+      .then(
+        () => {
+          dispatch("getLorryReceipt");
+        },
+        (error) => console.log("Couldnt save lorry reciepts", error)
+      );
   },
 };
 
