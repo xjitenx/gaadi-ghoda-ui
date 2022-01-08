@@ -42,29 +42,21 @@
             />
           </v-col>
           <v-col cols="12" sm="6" md="6">
-            <v-text-field
+            <v-select
               v-model="lorryReceiptRecord.partyId"
-              label="Party Name*"
-              required
+              label="Party"
+              :items="partyList"
+              item-text="name"
+              item-value="id"
             />
           </v-col>
           <v-col cols="12" sm="6" md="6">
-            <v-text-field
+            <v-select
               v-model="lorryReceiptRecord.brokerId"
-              label="Broker Name*"
-              disbaled
-              required
-            />
-          </v-col>
-          <v-col cols="12" sm="6" md="6">
-            <v-select />
-          </v-col>
-          <v-col cols="12" sm="6" md="6">
-            <v-text-field
-              v-model="lorryReceiptRecord.brokerId"
-              label="Broker Name*"
-              disbaled
-              required
+              label="Broker"
+              :items="brokerList"
+              item-text="name"
+              item-value="id"
             />
           </v-col>
         </v-row>
