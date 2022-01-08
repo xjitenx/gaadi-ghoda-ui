@@ -25,9 +25,6 @@ export default {
       addBrokerModelVisible: false,
     };
   },
-  mounted() {
-    this.$store.dispatch("getBroker");
-  },
   computed: {
     brokerList() {
       return this.$store.state.brokerList;

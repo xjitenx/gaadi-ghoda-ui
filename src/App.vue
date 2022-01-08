@@ -6,7 +6,11 @@
 <script>
 export default {
   name: "App",
-  data: () => ({}),
+  mounted() {
+    this.$store.dispatch("getLorryReceipt");
+    this.$store.dispatch("getParty");
+    this.$store.dispatch("getBroker");
+  },
 };
 </script>
 

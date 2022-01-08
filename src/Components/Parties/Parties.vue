@@ -26,9 +26,6 @@ export default {
       addPartyDialogVisible: false,
     };
   },
-  mounted() {
-    this.$store.dispatch("getParty");
-  },
   computed: {
     partyList() {
       return this.$store.state.partyList;

@@ -23,9 +23,6 @@ export default {
   data: () => ({
     addLRModelVisible: false,
   }),
-  mounted() {
-    this.$store.dispatch("getLorryReceipt");
-  },
   methods: {
     addLorryReceipt() {
       this.addLRModelVisible = true;
