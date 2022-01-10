@@ -107,6 +107,7 @@ export default {
   methods: {
     saveBroker() {
       this.$emit("save-broker", cloneDeep(this.brokerRecord));
+      this.$emit("close-model");
     },
   },
 };

@@ -102,8 +102,8 @@ export default {
   },
   methods: {
     saveLorryReceipt() {
-      this.$emit("close-model");
       this.$emit("save-lorry-receipt", cloneDeep(this.lorryReceiptRecord));
+      this.$emit("close-model");
     },
   },
 };

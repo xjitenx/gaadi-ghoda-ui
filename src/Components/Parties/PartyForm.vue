@@ -113,6 +113,7 @@ export default {
   methods: {
     saveParty() {
       this.$emit("save-party", cloneDeep(this.partyRecord));
+      this.$emit("close-model");
     },
   },
 };
