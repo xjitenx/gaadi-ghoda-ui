@@ -20,8 +20,8 @@ export default {
         { text: "Vehicle No.", value: "vehicleNo" },
         { text: "Weight", value: "weight" },
         { text: "Rate", value: "rate" },
-        { text: "Party Name", value: "partyId" },
-        { text: "Broker Name", value: "brokerId" },
+        { text: "Party Name", value: "partyName" },
+        { text: "Broker Name", value: "brokerName" },
       ],
     };
   },

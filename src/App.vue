@@ -7,9 +7,10 @@
 export default {
   name: "App",
   mounted() {
-    this.$store.dispatch("getLorryReceipt");
-    this.$store.dispatch("getParty");
-    this.$store.dispatch("getBroker");
+    this.$store
+      .dispatch("getParty")
+      .then(() => this.$store.dispatch("getBroker"))
+      .then(() => this.$store.dispatch("getLorryReceipt"));
   },
 };
 </script>

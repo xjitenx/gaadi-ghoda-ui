@@ -31,7 +31,6 @@ const mutations = {
 
 const actions = {
   loginUser({ dispatch }, loginCredentials) {
-    console.log("loginCredentials", loginCredentials, dispatch);
     axios.post("https://localhost:7073/auth/login", loginCredentials).then(
       ({ data: loginResponse }) => {
         if (loginResponse.loginSuccess) {
@@ -43,17 +42,14 @@ const actions = {
     );
   },
   getUserProfile({ commit }, { userId }) {
-    console.log("userId", userId, commit);
     axios.post("https://localhost:7073/user/profile", { id: userId }).then(
       ({ data: userProfile }) => {
-        console.log("userProfile", userProfile);
         commit("SET_USER_PROFILE", userProfile);
       },
       (error) => console.log("couldnt fetch user profile", error)
     );
   },
   getParty({ commit }) {
-    console.log(commit);
     axios.get("https://localhost:7073/party/party").then(
       ({ data: partyList }) => {
         commit("SET_PARTIE", partyList);
@@ -62,7 +58,6 @@ const actions = {
     );
   },
   saveParty({ dispatch }, party) {
-    console.log("party", party, dispatch);
     axios.post("https://localhost:7073/party/party", party).then(
       () => {
         dispatch("getParty");
@@ -71,17 +66,14 @@ const actions = {
     );
   },
   getBroker({ commit }) {
-    console.log(commit);
     axios.get("https://localhost:7073/broker/broker").then(
       ({ data: brokerList }) => {
-        console.log("brokerList", brokerList);
         commit("SET_BROKER", brokerList);
       },
       (error) => console.log("Couldnt fetch broker", error)
     );
   },
   saveBroker({ dispatch }, broker) {
-    console.log("broker", broker, dispatch);
     axios.post("https://localhost:7073/broker/broker", broker).then(
       () => {
         dispatch("getBroker");
@@ -89,18 +81,24 @@ const actions = {
       (error) => console.log("Couldnt save broker", error)
     );
   },
-  getLorryReceipt({ commit }) {
-    console.log(commit);
+  getLorryReceipt({ state, commit }) {
     axios.get("https://localhost:7073/lorryreceipt/lorryreceipt").then(
       ({ data: lorryReceiptList }) => {
-        console.log("brokerList", lorryReceiptList);
-        commit("SET_LORRY_RECEIPT", lorryReceiptList);
+        const lorryReceiptListData = lorryReceiptList.map((lr) => ({
+          ...lr,
+          partyName:
+            state.partyList.find((party) => party.id === lr.partyId)?.name ||
+            "-",
+          brokerName:
+            state.brokerList.find((broker) => broker.id === lr.brokerId)
+              ?.name || "-",
+        }));
+        commit("SET_LORRY_RECEIPT", lorryReceiptListData);
       },
       (error) => console.log("Couldnt fetch lorry reciepts", error)
     );
   },
   saveLorryReceipt({ dispatch }, lorryReceipt) {
-    console.log("lorryReceipt", lorryReceipt, dispatch);
     axios
       .post("https://localhost:7073/lorryreceipt/lorryreceipt", lorryReceipt)
       .then(
