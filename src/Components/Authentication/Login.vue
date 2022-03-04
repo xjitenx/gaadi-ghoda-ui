@@ -4,10 +4,10 @@
   >
     <h2>Login</h2>
     <v-text-field
-      v-model="emailId"
+      v-model="loginId"
       outline
       hide-details
-      label="Email-Id"
+      label="Login-Id"
       type="text"
       class="mt-2"
     />
@@ -29,13 +29,13 @@
 export default {
   name: "Login",
   data: () => ({
-    emailId: "jitender.gow@gmail.com",
-    password: "poplol123",
+    loginId: "jitender.gow@gmail.com",
+    password: "poplol",
   }),
   methods: {
     loginUser() {
       this.$store.dispatch("loginUser", {
-        loginId: this.emailId,
+        loginId: this.loginId,
         password: this.password,
       });
     },

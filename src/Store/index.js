@@ -30,23 +30,15 @@ const mutations = {
 };
 
 const actions = {
-  loginUser({ dispatch }, loginCredentials) {
-    axios.post("https://localhost:7073/auth/login", loginCredentials).then(
-      ({ data: loginResponse }) => {
-        if (loginResponse.loginSuccess) {
+  loginUser({ commit }, loginCredentials) {
+    axios.post("https://localhost:7073/api/auth/login", loginCredentials).then(
+      ({ data: userProfile }) => {
+        if (userProfile && userProfile.orgId && userProfile.id) {
+          commit("SET_USER_PROFILE", userProfile);
           router.push({ name: "LorryReceiptManager" });
-          dispatch("getUserProfile", loginResponse);
         }
       },
       (error) => console.log("Login FAILED", error)
-    );
-  },
-  getUserProfile({ commit }, { userId }) {
-    axios.post("https://localhost:7073/user/profile", { id: userId }).then(
-      ({ data: userProfile }) => {
-        commit("SET_USER_PROFILE", userProfile);
-      },
-      (error) => console.log("couldnt fetch user profile", error)
     );
   },
   getParty({ commit }) {

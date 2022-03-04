@@ -43,6 +43,12 @@ export default {
       },
     },
   }),
+  mounted() {
+    this.$store
+      .dispatch("getParty")
+      .then(() => this.$store.dispatch("getBroker"))
+      .then(() => this.$store.dispatch("getLorryReceipt"));
+  },
 };
 </script>
 
