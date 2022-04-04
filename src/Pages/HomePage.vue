@@ -44,6 +44,7 @@ export default {
     },
   }),
   mounted() {
+    console.log(this.$store.state.orgAccounts);
     this.$store
       .dispatch("getParty")
       .then(() => this.$store.dispatch("getBroker"))

@@ -8,21 +8,21 @@
         <v-row>
           <v-col cols="12" sm="6" md="6">
             <v-text-field
-              v-model="brokerRecord.Name"
+              v-model="brokerRecord.FirmName"
               label="Broker Name"
               required
             />
           </v-col>
           <v-col cols="12" sm="6" md="6">
             <v-text-field
-              v-model="brokerRecord.PersonFirstName"
+              v-model="brokerRecord.FirstName"
               label="Contact Person First Name"
               required
             />
           </v-col>
           <v-col cols="12" sm="6" md="6">
             <v-text-field
-              v-model="brokerRecord.PersonLastName"
+              v-model="brokerRecord.LastName"
               label="Contact Person Last Name"
               required
             />
@@ -90,17 +90,17 @@ export default {
   data() {
     return {
       brokerRecord: {
-        OrgId: this.$store.state.userProfile.orgId,
-        Name: "",
-        PersonFirstName: "",
-        PersonLastName: "",
+        FirmName: "",
+        FirstName: "",
+        LastName: "",
         EmailId: "",
         ContactNo: "",
         Address: "",
-        Country: "",
-        State: "",
         City: "",
+        State: "",
+        Country: "",
         ZipCode: "",
+        Status: "Active",
       },
     };
   },

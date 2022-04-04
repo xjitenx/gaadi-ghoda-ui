@@ -14,9 +14,9 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Name", value: "name" },
-        { text: "First Name", value: "personFirstName" },
-        { text: "Last Name", value: "personLastName" },
+        { text: "Firm Name", value: "firmName" },
+        { text: "First Name", value: "firstName" },
+        { text: "Last Name", value: "lastName" },
         { text: "Email-Id", value: "emailId" },
         { text: "Contact", value: "contactNo" },
         { text: "Address", value: "address" },

@@ -34,8 +34,8 @@ export default {
     openBrokerFormDialog() {
       this.addBrokerModelVisible = true;
     },
-    saveBroker(brokerRecord) {
-      this.$store.dispatch("saveBroker", brokerRecord);
+    saveBroker(orgId, bookieId, brokerRecord) {
+      this.$store.dispatch("saveBroker", orgId, bookieId, brokerRecord);
     },
   },
 };

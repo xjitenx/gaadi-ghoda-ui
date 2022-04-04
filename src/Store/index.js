@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 const state = {
   userProfile: {},
+  orgAccounts: [],
   partyList: [],
   brokerList: [],
   lorryReceipt: [],
@@ -17,6 +18,9 @@ const getters = {};
 const mutations = {
   SET_USER_PROFILE(state, userProfile) {
     state.userProfile = userProfile;
+  },
+  SET_ORG_ACCOUNTS(state, orgAccounts) {
+    state.orgAccounts = orgAccounts;
   },
   SET_PARTIE(state, partyList) {
     state.partyList = partyList;
@@ -30,17 +34,28 @@ const mutations = {
 };
 
 const actions = {
-  loginUser({ commit }, loginCredentials) {
+  loginUser({ commit, dispatch }, loginCredentials) {
     axios.post("https://localhost:7073/api/auth/login", loginCredentials).then(
       ({ data: userProfile }) => {
         if (userProfile && userProfile.orgId && userProfile.id) {
           commit("SET_USER_PROFILE", userProfile);
-          router.push({ name: "LorryReceiptManager" });
+          dispatch("getOrgAccounts", userProfile.orgId);
+          setTimeout(() => router.push({ name: "LorryReceiptManager" }), 2000);
         }
       },
       (error) => console.log("Login FAILED", error)
     );
   },
+  getOrgAccounts({ commit }, orgId) {
+    axios.get(`https://localhost:7073/api/${orgId}/account/gets`).then(
+      ({ data: orgAccounts }) => {
+        console.log(orgAccounts);
+        commit("SET_ORG_ACCOUNTS", orgAccounts);
+      },
+      (error) => console.log("Couldnt fetch Accounts", error)
+    );
+  },
+
   getParty({ commit }) {
     axios.get("https://localhost:7073/party/party").then(
       ({ data: partyList }) => {
@@ -57,21 +72,30 @@ const actions = {
       (error) => console.log("Couldnt save party", error)
     );
   },
-  getBroker({ commit }) {
-    axios.get("https://localhost:7073/broker/broker").then(
-      ({ data: brokerList }) => {
-        commit("SET_BROKER", brokerList);
-      },
-      (error) => console.log("Couldnt fetch broker", error)
-    );
+  getBroker({ state, commit }) {
+    axios
+      .get(
+        `https://localhost:7073/api/${state.userProfile.orgId}/bookie/${state.orgAccounts[0].id}/broker/gets`
+      )
+      .then(
+        ({ data: brokerList }) => {
+          commit("SET_BROKER", brokerList);
+        },
+        (error) => console.log("Couldnt fetch broker", error)
+      );
   },
-  saveBroker({ dispatch }, broker) {
-    axios.post("https://localhost:7073/broker/broker", broker).then(
-      () => {
-        dispatch("getBroker");
-      },
-      (error) => console.log("Couldnt save broker", error)
-    );
+  saveBroker({ state, dispatch }, broker) {
+    axios
+      .post(
+        `https://localhost:7073/api/${state.userProfile.orgId}/bookie/${state.orgAccounts[0].id}/broker/save`,
+        broker
+      )
+      .then(
+        () => {
+          dispatch("getBroker");
+        },
+        (error) => console.log("Couldnt save broker", error)
+      );
   },
   getLorryReceipt({ state, commit }) {
     axios.get("https://localhost:7073/lorryreceipt/lorryreceipt").then(
